@@ -1,8 +1,9 @@
+import 'package:base_repo/theme/app/theme_app.dart';
 import 'package:flutter/material.dart';
-import 'app.dart';
+
 import 'flavors.dart';
 
 void main() {
   F.appFlavor = Flavor.theme;
-  runApp(App());
+  runApp(const ThemeApp());
 }
