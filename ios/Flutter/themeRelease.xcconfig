@@ -1,0 +1,6 @@
+#include "Generated.xcconfig"
+
+FLUTTER_TARGET=lib/main_theme.dart
+ASSET_PREFIX=theme
+BUNDLE_NAME=Theme Test App
+BUNDLE_DISPLAY_NAME=Theme Test App
