@@ -22,11 +22,6 @@ class ThemeApp extends StatefulWidget {
 class _ThemeAppState extends State<ThemeApp> {
   bool useMaterial3 = true;
   ThemeMode themeMode = ThemeMode.system;
-  ColorSeed colorSelected = ColorSeed.baseColor;
-  ColorImageProvider imageSelected = ColorImageProvider.leaves;
-  ColorScheme? imageColorScheme = const ColorScheme.light();
-  ColorSelectionMethod colorSelectionMethod = ColorSelectionMethod.colorSeed;
-
   bool get useLightMode {
     switch (themeMode) {
       case ThemeMode.system:
@@ -47,32 +42,6 @@ class _ThemeAppState extends State<ThemeApp> {
   void handleMaterialVersionChange() {
     setState(() {
       useMaterial3 = !useMaterial3;
-    });
-  }
-
-  void handleCustomColor() {
-    setState(() {
-      colorSelectionMethod = ColorSelectionMethod.image;
-      imageSelected = ColorImageProvider.leaves;
-      imageColorScheme = lightColorScheme;
-    });
-  }
-
-  void handleColorSelect(int value) {
-    setState(() {
-      colorSelectionMethod = ColorSelectionMethod.colorSeed;
-      colorSelected = ColorSeed.values[value];
-    });
-  }
-
-  void handleImageSelect(int value) {
-    final String url = ColorImageProvider.values[value].url;
-    ColorScheme.fromImageProvider(provider: NetworkImage(url)).then((newScheme) {
-      setState(() {
-        colorSelectionMethod = ColorSelectionMethod.image;
-        imageSelected = ColorImageProvider.values[value];
-        imageColorScheme = newScheme;
-      });
     });
   }
 
@@ -101,29 +70,20 @@ class _ThemeAppState extends State<ThemeApp> {
           title: 'Material 3',
           themeMode: themeMode,
           theme: ThemeData(
-            colorSchemeSeed: colorSelectionMethod == ColorSelectionMethod.colorSeed ? colorSelected.color : null,
-            colorScheme: colorSelectionMethod == ColorSelectionMethod.image ? imageColorScheme : null,
+            colorScheme: lightScheme,
             useMaterial3: useMaterial3,
             brightness: Brightness.light,
           ),
           darkTheme: ThemeData(
-            colorSchemeSeed: colorSelectionMethod == ColorSelectionMethod.colorSeed
-                ? colorSelected.color
-                : imageColorScheme!.primary,
+            colorScheme: darkScheme,
             useMaterial3: useMaterial3,
             brightness: Brightness.dark,
           ),
           home: ThemeTestPage(
             useLightMode: useLightMode,
             useMaterial3: useMaterial3,
-            colorSelected: colorSelected,
-            imageSelected: imageSelected,
             handleBrightnessChange: handleBrightnessChange,
             handleMaterialVersionChange: handleMaterialVersionChange,
-            handleCustomColor: handleCustomColor,
-            handleColorSelect: handleColorSelect,
-            handleImageSelect: handleImageSelect,
-            colorSelectionMethod: colorSelectionMethod,
           ),
         );
       },
@@ -136,27 +96,15 @@ class ThemeTestPage extends StatefulWidget {
     super.key,
     required this.useLightMode,
     required this.useMaterial3,
-    required this.colorSelected,
     required this.handleBrightnessChange,
     required this.handleMaterialVersionChange,
-    required this.handleCustomColor,
-    required this.handleColorSelect,
-    required this.handleImageSelect,
-    required this.colorSelectionMethod,
-    required this.imageSelected,
   });
 
   final bool useLightMode;
   final bool useMaterial3;
-  final ColorSeed colorSelected;
-  final ColorImageProvider imageSelected;
-  final ColorSelectionMethod colorSelectionMethod;
 
   final void Function(bool useLightMode) handleBrightnessChange;
   final void Function() handleMaterialVersionChange;
-  final void Function() handleCustomColor;
-  final void Function(int value) handleColorSelect;
-  final void Function(int value) handleImageSelect;
 
   @override
   State<ThemeTestPage> createState() => _ThemeTestPageState();
@@ -264,19 +212,6 @@ class _ThemeTestPageState extends State<ThemeTestPage> with SingleTickerProvider
               _Material3Button(
                 handleMaterialVersionChange: widget.handleMaterialVersionChange,
               ),
-              _CustomColorButton(
-                handleCustomColor: widget.handleCustomColor,
-              ),
-              _ColorSeedButton(
-                handleColorSelect: widget.handleColorSelect,
-                colorSelected: widget.colorSelected,
-                colorSelectionMethod: widget.colorSelectionMethod,
-              ),
-              _ColorImageButton(
-                handleImageSelect: widget.handleImageSelect,
-                imageSelected: widget.imageSelected,
-                colorSelectionMethod: widget.colorSelectionMethod,
-              )
             ]
           : [Container()],
     );
@@ -295,25 +230,6 @@ class _ThemeTestPageState extends State<ThemeTestPage> with SingleTickerProvider
             child: _Material3Button(
               handleMaterialVersionChange: widget.handleMaterialVersionChange,
               showTooltipBelow: false,
-            ),
-          ),
-          Flexible(
-            child: _CustomColorButton(
-              handleCustomColor: widget.handleCustomColor,
-            ),
-          ),
-          Flexible(
-            child: _ColorSeedButton(
-              handleColorSelect: widget.handleColorSelect,
-              colorSelected: widget.colorSelected,
-              colorSelectionMethod: widget.colorSelectionMethod,
-            ),
-          ),
-          Flexible(
-            child: _ColorImageButton(
-              handleImageSelect: widget.handleImageSelect,
-              imageSelected: widget.imageSelected,
-              colorSelectionMethod: widget.colorSelectionMethod,
             ),
           ),
         ],
@@ -349,11 +265,6 @@ class _ThemeTestPageState extends State<ThemeTestPage> with SingleTickerProvider
                         handleBrightnessChange: widget.handleBrightnessChange,
                         useMaterial3: widget.useMaterial3,
                         handleMaterialVersionChange: widget.handleMaterialVersionChange,
-                        handleImageSelect: widget.handleImageSelect,
-                        handleColorSelect: widget.handleColorSelect,
-                        colorSelectionMethod: widget.colorSelectionMethod,
-                        imageSelected: widget.imageSelected,
-                        colorSelected: widget.colorSelected,
                       )
                     : _trailingActions(),
               ),
@@ -421,156 +332,19 @@ class _Material3Button extends StatelessWidget {
   }
 }
 
-class _CustomColorButton extends StatelessWidget {
-  const _CustomColorButton({
-    required this.handleCustomColor,
-  });
-
-  final void Function() handleCustomColor;
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: const Icon(Icons.cut_sharp),
-      onPressed: handleCustomColor,
-    );
-  }
-}
-
-class _ColorSeedButton extends StatelessWidget {
-  const _ColorSeedButton({
-    required this.handleColorSelect,
-    required this.colorSelected,
-    required this.colorSelectionMethod,
-  });
-
-  final void Function(int) handleColorSelect;
-  final ColorSeed colorSelected;
-  final ColorSelectionMethod colorSelectionMethod;
-
-  @override
-  Widget build(BuildContext context) {
-    return PopupMenuButton(
-      icon: Icon(
-        Icons.palette_outlined,
-        color: Theme.of(context).colorScheme.onSurfaceVariant,
-      ),
-      tooltip: 'Select a seed color',
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      itemBuilder: (context) {
-        return List.generate(ColorSeed.values.length, (index) {
-          ColorSeed currentColor = ColorSeed.values[index];
-
-          return PopupMenuItem(
-            value: index,
-            enabled: currentColor != colorSelected || colorSelectionMethod != ColorSelectionMethod.colorSeed,
-            child: Wrap(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Icon(
-                    currentColor == colorSelected && colorSelectionMethod != ColorSelectionMethod.image
-                        ? Icons.color_lens
-                        : Icons.color_lens_outlined,
-                    color: currentColor.color,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: Text(currentColor.label),
-                ),
-              ],
-            ),
-          );
-        });
-      },
-      onSelected: handleColorSelect,
-    );
-  }
-}
-
-class _ColorImageButton extends StatelessWidget {
-  const _ColorImageButton({
-    required this.handleImageSelect,
-    required this.imageSelected,
-    required this.colorSelectionMethod,
-  });
-
-  final void Function(int) handleImageSelect;
-  final ColorImageProvider imageSelected;
-  final ColorSelectionMethod colorSelectionMethod;
-
-  @override
-  Widget build(BuildContext context) {
-    return PopupMenuButton(
-      icon: Icon(
-        Icons.image_outlined,
-        color: Theme.of(context).colorScheme.onSurfaceVariant,
-      ),
-      tooltip: 'Select a color extraction image',
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      itemBuilder: (context) {
-        return List.generate(ColorImageProvider.values.length, (index) {
-          ColorImageProvider currentImageProvider = ColorImageProvider.values[index];
-
-          return PopupMenuItem(
-            value: index,
-            enabled: currentImageProvider != imageSelected || colorSelectionMethod != ColorSelectionMethod.image,
-            child: Wrap(
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 48),
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image(
-                          image: NetworkImage(ColorImageProvider.values[index].url),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: Text(currentImageProvider.label),
-                ),
-              ],
-            ),
-          );
-        });
-      },
-      onSelected: handleImageSelect,
-    );
-  }
-}
-
 class _ExpandedTrailingActions extends StatelessWidget {
   const _ExpandedTrailingActions({
     required this.useLightMode,
     required this.handleBrightnessChange,
     required this.useMaterial3,
     required this.handleMaterialVersionChange,
-    required this.handleColorSelect,
-    required this.handleImageSelect,
-    required this.imageSelected,
-    required this.colorSelected,
-    required this.colorSelectionMethod,
   });
 
   final void Function(bool) handleBrightnessChange;
   final void Function() handleMaterialVersionChange;
-  final void Function(int) handleImageSelect;
-  final void Function(int) handleColorSelect;
 
   final bool useLightMode;
   final bool useMaterial3;
-
-  final ColorImageProvider imageSelected;
-  final ColorSeed colorSelected;
-  final ColorSelectionMethod colorSelectionMethod;
 
   @override
   Widget build(BuildContext context) {
@@ -605,111 +379,10 @@ class _ExpandedTrailingActions extends StatelessWidget {
             ],
           ),
           const Divider(),
-          _ExpandedColorSeedAction(
-            handleColorSelect: handleColorSelect,
-            colorSelected: colorSelected,
-            colorSelectionMethod: colorSelectionMethod,
-          ),
-          const Divider(),
-          _ExpandedImageColorAction(
-            handleImageSelect: handleImageSelect,
-            imageSelected: imageSelected,
-            colorSelectionMethod: colorSelectionMethod,
-          ),
         ],
       ),
     );
     return screenHeight > 740 ? trailingActionsBody : SingleChildScrollView(child: trailingActionsBody);
-  }
-}
-
-class _ExpandedColorSeedAction extends StatelessWidget {
-  const _ExpandedColorSeedAction({
-    required this.handleColorSelect,
-    required this.colorSelected,
-    required this.colorSelectionMethod,
-  });
-
-  final void Function(int) handleColorSelect;
-  final ColorSeed colorSelected;
-  final ColorSelectionMethod colorSelectionMethod;
-
-  @override
-  Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(maxHeight: 200.0),
-      child: GridView.count(
-        crossAxisCount: 3,
-        children: List.generate(
-          ColorSeed.values.length,
-          (i) => IconButton(
-            icon: const Icon(Icons.radio_button_unchecked),
-            color: ColorSeed.values[i].color,
-            isSelected: colorSelected.color == ColorSeed.values[i].color &&
-                colorSelectionMethod == ColorSelectionMethod.colorSeed,
-            selectedIcon: const Icon(Icons.circle),
-            onPressed: () {
-              handleColorSelect(i);
-            },
-            tooltip: ColorSeed.values[i].label,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _ExpandedImageColorAction extends StatelessWidget {
-  const _ExpandedImageColorAction({
-    required this.handleImageSelect,
-    required this.imageSelected,
-    required this.colorSelectionMethod,
-  });
-
-  final void Function(int) handleImageSelect;
-  final ColorImageProvider imageSelected;
-  final ColorSelectionMethod colorSelectionMethod;
-
-  @override
-  Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(maxHeight: 150.0),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: GridView.count(
-          crossAxisCount: 3,
-          children: List.generate(
-            ColorImageProvider.values.length,
-            (i) => Tooltip(
-              message: ColorImageProvider.values[i].name,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(4.0),
-                onTap: () => handleImageSelect(i),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Material(
-                    borderRadius: BorderRadius.circular(4.0),
-                    elevation: imageSelected == ColorImageProvider.values[i] &&
-                            colorSelectionMethod == ColorSelectionMethod.image
-                        ? 3
-                        : 0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(4.0),
-                        child: Image(
-                          image: NetworkImage(ColorImageProvider.values[i].url),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }
 
