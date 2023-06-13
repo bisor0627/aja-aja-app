@@ -1,13 +1,74 @@
+import 'package:base_repo/app/pages/authenticated/authenticated.dart';
+import 'package:base_repo/app/pages/unauthenticated/unauthenticated.dart';
+import 'package:base_repo/state/auth_state.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import 'app/pages/splash_page.dart';
+import 'app/router.dart';
 import 'flavors.dart';
-import 'pages/my_home_page.dart';
 import 'theme/theme.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  App({super.key});
+  late final GoRouter _router = GoRouter(
+    routes: [
+      GoRoute(
+          path: Routes.splash,
+          builder: (BuildContext context, GoRouterState state) =>
+              const SplashPage()),
+      GoRoute(
+        path: Routes.login,
+        builder: (BuildContext context, GoRouterState state) =>
+            const LoginPage(),
+      ),
+      GoRoute(
+        path: Routes.signup,
+        builder: (BuildContext context, GoRouterState state) =>
+            const SignUpPage(),
+      ),
+      GoRoute(
+        path: Routes.resetPassword,
+        builder: (BuildContext context, GoRouterState state) =>
+            const ResetPasswordPage(),
+      ),
+      GoRoute(
+        path: Routes.navigationFrame,
+        builder: (BuildContext context, GoRouterState state) =>
+            const NavigationFramePage(),
+        routes: [
+          GoRoute(
+            path: Routes.todayQuestion,
+            builder: (BuildContext context, GoRouterState state) =>
+                const TodayQuestionPage(),
+          ),
+          GoRoute(
+            path: Routes.viewRecord,
+            builder: (BuildContext context, GoRouterState state) =>
+                const ViewRecordPage(),
+          ),
+          GoRoute(
+            path: Routes.viewProfile,
+            builder: (BuildContext context, GoRouterState state) =>
+                const ViewProfilePage(),
+          ),
+        ],
+      ),
+    ],
+    redirect: (BuildContext context, GoRouterState state) async {
+      final bool loggedIn = await isSignedIn();
+      final bool loggingIn = state.matchedLocation == Routes.login;
+      if (!loggedIn) {
+        return Routes.login;
+      }
+      if (loggingIn) {
+        return Routes.splash;
+      }
+      return null;
+    },
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +89,11 @@ class App extends StatelessWidget {
         lightScheme = lightColorScheme;
         darkScheme = darkColorScheme;
       }
-      return MaterialApp(
+      return MaterialApp.router(
+        routerConfig: _router,
         title: F.title,
         themeMode: ThemeMode.system,
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: lightScheme,
           useMaterial3: true,
@@ -41,10 +104,12 @@ class App extends StatelessWidget {
           useMaterial3: true,
           brightness: Brightness.dark,
         ),
-        home: _flavorBanner(
-          child: MyHomePage(),
-          show: kDebugMode,
-        ),
+        builder: (context, child) {
+          return _flavorBanner(
+            child: child ?? const SizedBox.shrink(),
+            show: kDebugMode,
+          );
+        },
       );
     });
   }
