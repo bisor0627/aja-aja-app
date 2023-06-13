@@ -25,7 +25,8 @@ class _ThemeAppState extends State<ThemeApp> {
   bool get useLightMode {
     switch (themeMode) {
       case ThemeMode.system:
-        return View.of(context).platformDispatcher.platformBrightness == Brightness.light;
+        return View.of(context).platformDispatcher.platformBrightness ==
+            Brightness.light;
       case ThemeMode.light:
         return true;
       case ThemeMode.dark:
@@ -110,7 +111,8 @@ class ThemeTestPage extends StatefulWidget {
   State<ThemeTestPage> createState() => _ThemeTestPageState();
 }
 
-class _ThemeTestPageState extends State<ThemeTestPage> with SingleTickerProviderStateMixin {
+class _ThemeTestPageState extends State<ThemeTestPage>
+    with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   late final AnimationController controller;
   late final CurvedAnimation railAnimation;
@@ -155,13 +157,15 @@ class _ThemeTestPageState extends State<ThemeTestPage> with SingleTickerProvider
         showMediumSizeLayout = true;
         showLargeSizeLayout = false;
       }
-      if (status != AnimationStatus.forward && status != AnimationStatus.completed) {
+      if (status != AnimationStatus.forward &&
+          status != AnimationStatus.completed) {
         controller.forward();
       }
     } else {
       showMediumSizeLayout = false;
       showLargeSizeLayout = false;
-      if (status != AnimationStatus.reverse && status != AnimationStatus.dismissed) {
+      if (status != AnimationStatus.reverse &&
+          status != AnimationStatus.dismissed) {
         controller.reverse();
       }
     }
@@ -177,7 +181,8 @@ class _ThemeTestPageState extends State<ThemeTestPage> with SingleTickerProvider
     });
   }
 
-  Widget createScreenFor(ScreenSelected screenSelected, bool showNavBarExample) {
+  Widget createScreenFor(
+      ScreenSelected screenSelected, bool showNavBarExample) {
     switch (screenSelected) {
       case ScreenSelected.component:
         return Expanded(
@@ -203,7 +208,9 @@ class _ThemeTestPageState extends State<ThemeTestPage> with SingleTickerProvider
 
   PreferredSizeWidget createAppBar() {
     return AppBar(
-      title: widget.useMaterial3 ? const Text('Material 3') : const Text('Material 2'),
+      title: widget.useMaterial3
+          ? const Text('Material 3')
+          : const Text('Material 2'),
       actions: !showMediumSizeLayout && !showLargeSizeLayout
           ? [
               _BrightnessButton(
@@ -245,7 +252,8 @@ class _ThemeTestPageState extends State<ThemeTestPage> with SingleTickerProvider
           animationController: controller,
           railAnimation: railAnimation,
           appBar: createAppBar(),
-          body: createScreenFor(ScreenSelected.values[screenIndex], controller.value == 1),
+          body: createScreenFor(
+              ScreenSelected.values[screenIndex], controller.value == 1),
           navigationRail: NavigationRail(
             extended: showLargeSizeLayout,
             destinations: navRailDestinations,
@@ -264,7 +272,8 @@ class _ThemeTestPageState extends State<ThemeTestPage> with SingleTickerProvider
                         useLightMode: widget.useLightMode,
                         handleBrightnessChange: widget.handleBrightnessChange,
                         useMaterial3: widget.useMaterial3,
-                        handleMaterialVersionChange: widget.handleMaterialVersionChange,
+                        handleMaterialVersionChange:
+                            widget.handleMaterialVersionChange,
                       )
                     : _trailingActions(),
               ),
@@ -302,7 +311,9 @@ class _BrightnessButton extends StatelessWidget {
       preferBelow: showTooltipBelow,
       message: 'Toggle brightness',
       child: IconButton(
-        icon: isBright ? const Icon(Icons.dark_mode_outlined) : const Icon(Icons.light_mode_outlined),
+        icon: isBright
+            ? const Icon(Icons.dark_mode_outlined)
+            : const Icon(Icons.light_mode_outlined),
         onPressed: () => handleBrightnessChange(!isBright),
       ),
     );
@@ -325,7 +336,9 @@ class _Material3Button extends StatelessWidget {
       preferBelow: showTooltipBelow,
       message: 'Switch to Material ${useMaterial3 ? 2 : 3}',
       child: IconButton(
-        icon: useMaterial3 ? const Icon(Icons.filter_2) : const Icon(Icons.filter_3),
+        icon: useMaterial3
+            ? const Icon(Icons.filter_2)
+            : const Icon(Icons.filter_3),
         onPressed: handleMaterialVersionChange,
       ),
     );
@@ -369,7 +382,9 @@ class _ExpandedTrailingActions extends StatelessWidget {
           ),
           Row(
             children: [
-              useMaterial3 ? const Text('Material 3') : const Text('Material 2'),
+              useMaterial3
+                  ? const Text('Material 3')
+                  : const Text('Material 2'),
               Expanded(child: Container()),
               Switch(
                   value: useMaterial3,
@@ -382,7 +397,9 @@ class _ExpandedTrailingActions extends StatelessWidget {
         ],
       ),
     );
-    return screenHeight > 740 ? trailingActionsBody : SingleChildScrollView(child: trailingActionsBody);
+    return screenHeight > 740
+        ? trailingActionsBody
+        : SingleChildScrollView(child: trailingActionsBody);
   }
 }
 
@@ -509,7 +526,11 @@ class OffsetAnimation extends CurvedAnimation {
 }
 
 class RailTransition extends StatefulWidget {
-  const RailTransition({super.key, required this.animation, required this.backgroundColor, required this.child});
+  const RailTransition(
+      {super.key,
+      required this.animation,
+      required this.backgroundColor,
+      required this.child});
 
   final Animation<double> animation;
   final Widget child;
@@ -561,7 +582,11 @@ class _RailTransition extends State<RailTransition> {
 }
 
 class BarTransition extends StatefulWidget {
-  const BarTransition({super.key, required this.animation, required this.backgroundColor, required this.child});
+  const BarTransition(
+      {super.key,
+      required this.animation,
+      required this.backgroundColor,
+      required this.child});
 
   final Animation<double> animation;
   final Color backgroundColor;
