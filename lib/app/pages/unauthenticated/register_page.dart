@@ -1,38 +1,41 @@
+import 'package:base_repo/app/pages/unauthenticated/unauthenticated.dart';
+import 'package:base_repo/app/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SignUpPage extends ConsumerWidget {
-  const SignUpPage({super.key});
-
+class RegisterPage extends ConsumerWidget {
+  const RegisterPage({super.key});
+  static String get routeName => 'register';
+  static String get routeLocation => '/$routeName';
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: Text('회원가입')),
+      appBar: AppBar(title: const Text('회원가입')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextField(
+            const TextField(
               decoration: InputDecoration(
                 labelText: '휴대폰번호',
               ),
             ),
-            TextField(
+            const TextField(
               obscureText: true,
               decoration: InputDecoration(
                 labelText: '비밀번호',
               ),
             ),
-            TextField(
+            const TextField(
               obscureText: true,
               decoration: InputDecoration(
                 labelText: '비밀번호 확인',
               ),
             ),
             ElevatedButton(
-              child: Text('회원가입'),
+              child: const Text('회원가입'),
               onPressed: () {
-                // context.go() 로직
+                ref.read(routerProvider).go(LoginPage.routeLocation);
               },
             ),
           ],

@@ -7,7 +7,7 @@ import 'flavors.dart';
 void main() {
   F.appFlavor = Flavor.prod;
   runApp(
-    ProviderScope(
+    const ProviderScope(
       child: App(),
     ),
   );
