@@ -1,4 +1,4 @@
-import 'package:base_repo/app/router.dart';
+import 'package:aja_aja_app/app/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,4 +1,4 @@
-package com.example.base_repo
+package com.example.aja_aja_app
 
 import io.flutter.embedding.android.FlutterActivity
 
