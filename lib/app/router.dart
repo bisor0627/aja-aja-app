@@ -1,17 +1,17 @@
-import 'package:base_repo/app/pages/authenticated/authenticated.dart';
-import 'package:base_repo/app/pages/unauthenticated/unauthenticated.dart';
-import 'package:base_repo/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '/provider/auth_provider.dart';
+import 'pages/auth/auth.dart';
+import 'pages/home/home.dart';
 import 'pages/splash_page.dart';
 
 export 'package:go_router/go_router.dart';
 
-export 'pages/authenticated/authenticated.dart';
+export 'pages/auth/auth.dart';
+export 'pages/home/home.dart';
 export 'pages/splash_page.dart';
-export 'pages/unauthenticated/unauthenticated.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -58,10 +58,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           },
           routes: [
             GoRoute(
-              path: TodayQuestionPage.routeLocation,
-              name: TodayQuestionPage.routeName,
+              path: QuestionPage.routeLocation,
+              name: QuestionPage.routeName,
               builder: (BuildContext context, GoRouterState state) =>
-                  const TodayQuestionPage(),
+                  const QuestionPage(),
             ),
             GoRoute(
               path: RecordPage.routeLocation,
@@ -70,10 +70,10 @@ final routerProvider = Provider<GoRouter>((ref) {
                   const RecordPage(),
             ),
             GoRoute(
-              path: MyProfilePage.routeLocation,
-              name: MyProfilePage.routeName,
+              path: ProfilePage.routeLocation,
+              name: ProfilePage.routeName,
               builder: (BuildContext context, GoRouterState state) =>
-                  const MyProfilePage(),
+                  const ProfilePage(),
             ),
           ]),
     ],
@@ -81,13 +81,11 @@ final routerProvider = Provider<GoRouter>((ref) {
       final bool isAuth = await authState.isSignedIn();
       final isSplash = state.location == SplashPage.routeLocation;
       if (isSplash) {
-        return isAuth
-            ? TodayQuestionPage.routeLocation
-            : LoginPage.routeLocation;
+        return isAuth ? QuestionPage.routeLocation : LoginPage.routeLocation;
       }
       final isLoggingIn = state.location == LoginPage.routeLocation;
       if (isLoggingIn) {
-        return isAuth ? TodayQuestionPage.routeLocation : null;
+        return isAuth ? QuestionPage.routeLocation : null;
       }
       return null;
     },

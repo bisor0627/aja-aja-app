@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TodayQuestionPage extends ConsumerWidget {
-  const TodayQuestionPage({super.key});
-  static String get routeName => 'todayQuestion';
+class QuestionPage extends ConsumerWidget {
+  const QuestionPage({super.key});
+  static String get routeName => 'question';
   static String get routeLocation => '/$routeName';
   @override
   Widget build(BuildContext context, WidgetRef ref) {

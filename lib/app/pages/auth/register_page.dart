@@ -1,14 +1,15 @@
+import 'package:base_repo/app/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ResetPasswordPage extends ConsumerWidget {
-  const ResetPasswordPage({super.key});
-  static String get routeName => 'resetPassword';
+class RegisterPage extends ConsumerWidget {
+  const RegisterPage({super.key});
+  static String get routeName => 'register';
   static String get routeLocation => '/$routeName';
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text('비밀번호 재설정')),
+      appBar: AppBar(title: const Text('회원가입')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -16,16 +17,6 @@ class ResetPasswordPage extends ConsumerWidget {
             const TextField(
               decoration: InputDecoration(
                 labelText: '휴대폰번호',
-              ),
-            ),
-            const TextField(
-              decoration: InputDecoration(
-                labelText: '이메일',
-              ),
-            ),
-            const TextField(
-              decoration: InputDecoration(
-                labelText: '인증번호',
               ),
             ),
             const TextField(
@@ -41,9 +32,9 @@ class ResetPasswordPage extends ConsumerWidget {
               ),
             ),
             ElevatedButton(
-              child: const Text('재설정'),
+              child: const Text('회원가입'),
               onPressed: () {
-                // context.go() 로직
+                ref.read(routerProvider).go(LoginPage.routeLocation);
               },
             ),
           ],

@@ -44,11 +44,11 @@ final class TabPage extends ConsumerWidget {
     final GoRouter route = ref.watch(routerProvider);
 
     final String location = route.location;
-    if (location == TodayQuestionPage.routeLocation) {
+    if (location == QuestionPage.routeLocation) {
       return 0;
     } else if (location == RecordPage.routeLocation) {
       return 1;
-    } else if (location == MyProfilePage.routeLocation) {
+    } else if (location == ProfilePage.routeLocation) {
       return 2;
     } else {
       return 0; // Default index if no match
@@ -59,13 +59,13 @@ final class TabPage extends ConsumerWidget {
     final GoRouter route = ref.watch(routerProvider);
     switch (index) {
       case 0:
-        route.go(TodayQuestionPage.routeLocation);
+        route.go(QuestionPage.routeLocation);
         break;
       case 1:
         route.go(RecordPage.routeLocation);
         break;
       case 2:
-        route.go(MyProfilePage.routeLocation);
+        route.go(ProfilePage.routeLocation);
         break;
     }
   }
