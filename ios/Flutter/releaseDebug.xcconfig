@@ -1,6 +1,0 @@
-#include "Generated.xcconfig"
-
-FLUTTER_TARGET=lib/main_release.dart
-ASSET_PREFIX=release
-BUNDLE_NAME=Release App
-BUNDLE_DISPLAY_NAME=Release App
