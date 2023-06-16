@@ -41,20 +41,20 @@ flavorizr:
       app:
         name: "Release App"
       android:
-        applicationId: "com.example.prod"
+        applicationId: "com.a.ja.a.ja.app.prod"
       ios:
-        bundleId: "com.example.prod"
+        bundleId: "com.a.ja.a.ja.app.prod"
     dev:
       app:
         name: "Develop App"
       android:
-        applicationId: "com.example.dev"
+        applicationId: "com.a.ja.a.ja.app.dev"
       ios:
-        bundleId: "com.example.dev"
+        bundleId: "com.a.ja.a.ja.app.dev"
     theme:
       app:
         name: "Theme Test App"
       android:
-        applicationId: "com.example.theme"
+        applicationId: "com.a.ja.a.ja.app.theme"
       ios:
-        bundleId: "com.example.theme"
+        bundleId: "com.a.ja.a.ja.app.theme"
