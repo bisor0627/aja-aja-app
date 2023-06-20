@@ -1,12 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'app.dart';
 import 'flavors.dart';
+import 'main.dart' as runner;
 
-void main() {
+Future<void> main() async {
   F.appFlavor = Flavor.dev;
-  runApp(
-    const ProviderScope(child: App()),
-  );
+  await runner.main();
 }
