@@ -19,13 +19,9 @@ class App extends ConsumerWidget {
 
       if (lightDynamic != null && darkDynamic != null) {
         lightScheme = lightDynamic.harmonized();
-        lightCustomColors = lightCustomColors.harmonized(lightScheme);
 
-        // Repeat for the dark color scheme.
         darkScheme = darkDynamic.harmonized();
-        darkCustomColors = darkCustomColors.harmonized(darkScheme);
       } else {
-        // Otherwise, use fallback schemes.
         lightScheme = lightColorScheme;
         darkScheme = darkColorScheme;
       }
@@ -43,6 +39,7 @@ class App extends ConsumerWidget {
         ),
         darkTheme: ThemeData(
           colorScheme: darkScheme,
+          extensions: [],
           useMaterial3: true,
           brightness: Brightness.dark,
         ),

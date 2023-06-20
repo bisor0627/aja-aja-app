@@ -55,11 +55,9 @@ class _ThemeAppState extends State<ThemeApp> {
 
         if (lightDynamic != null && darkDynamic != null) {
           lightScheme = lightDynamic.harmonized();
-          lightCustomColors = lightCustomColors.harmonized(lightScheme);
 
           // Repeat for the dark color scheme.
           darkScheme = darkDynamic.harmonized();
-          darkCustomColors = darkCustomColors.harmonized(darkScheme);
         } else {
           // Otherwise, use fallback schemes.
           lightScheme = lightColorScheme;
