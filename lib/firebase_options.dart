@@ -48,17 +48,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyCRfSRmdAuUGo-BjaBXpcA6gEywuCe0tv4',
-    appId: '1:508266637437:web:8440a9ca32d6baaa22e914',
+    appId: '1:508266637437:web:f38cd1b041109eef22e914',
     messagingSenderId: '508266637437',
     projectId: 'aja-aja-app',
     authDomain: 'aja-aja-app.firebaseapp.com',
     storageBucket: 'aja-aja-app.appspot.com',
-    measurementId: 'G-0WJJJBQ5F2',
+    measurementId: 'G-S5GK8T8Z75',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyASNCKhxIR6HAmutkm1Jy1ZPhetoYc0Hjc',
-    appId: '1:508266637437:android:df15027a421a56e922e914',
+    appId: '1:508266637437:android:faef209948b22b2622e914',
     messagingSenderId: '508266637437',
     projectId: 'aja-aja-app',
     storageBucket: 'aja-aja-app.appspot.com',
@@ -66,7 +66,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCbdKxMSQYZzVrO8ikkMnNNgdYC71Bizok',
-    appId: '1:508266637437:ios:c1aca7e5dd320e9022e914',
+    appId: '1:508266637437:ios:3ba3d8f1d44cfd7022e914',
     messagingSenderId: '508266637437',
     projectId: 'aja-aja-app',
     storageBucket: 'aja-aja-app.appspot.com',

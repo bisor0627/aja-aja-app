@@ -12,11 +12,11 @@ class F {
   static String get title {
     switch (appFlavor) {
       case Flavor.prod:
-        return 'Release App';
+        return 'AjaAja';
       case Flavor.dev:
-        return 'Develop App';
+        return 'AjaAja(DEV)';
       case Flavor.theme:
-        return 'Theme Test App';
+        return 'AjaAja(Theme)';
       default:
         return 'title';
     }

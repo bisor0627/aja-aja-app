@@ -1,0 +1,42 @@
+
+flavors:
+  prod:  
+    app:
+      name: "AjaAja"
+    android:
+      applicationId: "com.a.ja.a.ja.app"
+      generateDummyAssets: false
+      firebase:
+        config: ".firebase/prod/google-services.json"
+    ios:
+      bundleId: "com.a.ja.a.ja.app"
+      generateDummyAssets: false
+      firebase:
+        config: ".firebase/prod/GoogleService-Info.plist"
+  dev:  
+    app:
+      name: "AjaAja(DEV)"
+    android:
+      applicationId: "com.a.ja.a.ja.app.dev"
+      generateDummyAssets: false
+      firebase:
+        config: ".firebase/dev/google-services.json"
+    ios:
+      bundleId: "com.a.ja.a.ja.app"
+      generateDummyAssets: false
+      firebase:
+        config: ".firebase/dev/GoogleService-Info.plist"
+  theme:
+    app:
+      name: "AjaAja(Theme)"
+    android:
+      applicationId: "com.a.ja.a.ja.app.theme"
+      generateDummyAssets: false
+      firebase:
+        config: ".firebase/theme/google-services.json"
+    ios:
+      bundleId: "com.a.ja.a.ja.app.theme"
+      generateDummyAssets: false
+      firebase:
+        config: ".firebase/prod/GoogleService-Info.plist"
+ 
