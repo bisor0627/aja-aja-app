@@ -13,8 +13,10 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: beta
+      - run: flutter config --enable-web
       - run: flutter pub get
-      - run: flutter test
+      - run: flutter build web --release lib/main_prod.dart --web-renderer=auto --base-href /aja-aja-app/
       - uses: bluefireteam/flutter-gh-pages@v7
         with:
+          targetBranch: gh-pages
           baseHref: /aja-aja-app
