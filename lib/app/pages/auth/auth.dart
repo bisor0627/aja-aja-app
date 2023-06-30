@@ -1,3 +1,3 @@
-export 'login_page.dart';
-export 'password_reset_page.dart';
-export 'register_page.dart';
+export 'login_screen.dart';
+export 'password_reset_screen.dart';
+export 'register_screen.dart';

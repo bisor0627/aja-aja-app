@@ -1,11 +1,10 @@
-import 'package:aja_aja_app/app/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ResetPasswordPage extends ConsumerWidget {
-  const ResetPasswordPage({super.key});
-  static String get routeName => 'resetPassword';
-  static String get routeLocation => '/$routeName';
+import '../../routers.dart';
+
+class ResetPasswordScreen extends ConsumerWidget {
+  const ResetPasswordScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
@@ -45,7 +44,7 @@ class ResetPasswordPage extends ConsumerWidget {
               ElevatedButton(
                 child: const Text('재설정'),
                 onPressed: () {
-                  ref.read(routerProvider).go(LoginPage.routeLocation);
+                  const LoginRoute().go(context);
                 },
               ),
             ],
