@@ -11,6 +11,8 @@ List<RouteBase> get $appRoutes => [
       $loginRoute,
       $registerRoute,
       $resetPasswordRoute,
+      $termsRoute,
+      $privacyRoute,
       $networkDisconnectedScreenRoute,
       $updateRequiredScreenRoute,
       $storageCapacityInsufficientScreenRoute,
@@ -34,7 +36,8 @@ extension $SplashRouteExtension on SplashRoute {
 
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
-  void pushReplacement(BuildContext context) => context.pushReplacement(location);
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
 }
@@ -55,7 +58,8 @@ extension $LoginRouteExtension on LoginRoute {
 
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
-  void pushReplacement(BuildContext context) => context.pushReplacement(location);
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
 }
@@ -76,7 +80,8 @@ extension $RegisterRouteExtension on RegisterRoute {
 
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
-  void pushReplacement(BuildContext context) => context.pushReplacement(location);
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
 }
@@ -87,7 +92,8 @@ RouteBase get $resetPasswordRoute => GoRouteData.$route(
     );
 
 extension $ResetPasswordRouteExtension on ResetPasswordRoute {
-  static ResetPasswordRoute _fromState(GoRouterState state) => const ResetPasswordRoute();
+  static ResetPasswordRoute _fromState(GoRouterState state) =>
+      const ResetPasswordRoute();
 
   String get location => GoRouteData.$location(
         '/reset_password_screen',
@@ -97,7 +103,52 @@ extension $ResetPasswordRouteExtension on ResetPasswordRoute {
 
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
-  void pushReplacement(BuildContext context) => context.pushReplacement(location);
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $termsRoute => GoRouteData.$route(
+      path: '/components_screen',
+      factory: $TermsRouteExtension._fromState,
+    );
+
+extension $TermsRouteExtension on TermsRoute {
+  static TermsRoute _fromState(GoRouterState state) => const TermsRoute();
+
+  String get location => GoRouteData.$location(
+        '/components_screen',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $privacyRoute => GoRouteData.$route(
+      path: '/components_screen',
+      factory: $PrivacyRouteExtension._fromState,
+    );
+
+extension $PrivacyRouteExtension on PrivacyRoute {
+  static PrivacyRoute _fromState(GoRouterState state) => const PrivacyRoute();
+
+  String get location => GoRouteData.$location(
+        '/components_screen',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
 }
@@ -107,8 +158,10 @@ RouteBase get $networkDisconnectedScreenRoute => GoRouteData.$route(
       factory: $NetworkDisconnectedScreenRouteExtension._fromState,
     );
 
-extension $NetworkDisconnectedScreenRouteExtension on NetworkDisconnectedScreenRoute {
-  static NetworkDisconnectedScreenRoute _fromState(GoRouterState state) => const NetworkDisconnectedScreenRoute();
+extension $NetworkDisconnectedScreenRouteExtension
+    on NetworkDisconnectedScreenRoute {
+  static NetworkDisconnectedScreenRoute _fromState(GoRouterState state) =>
+      const NetworkDisconnectedScreenRoute();
 
   String get location => GoRouteData.$location(
         '/network_disconnected_screen',
@@ -118,7 +171,8 @@ extension $NetworkDisconnectedScreenRouteExtension on NetworkDisconnectedScreenR
 
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
-  void pushReplacement(BuildContext context) => context.pushReplacement(location);
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
 }
@@ -129,7 +183,8 @@ RouteBase get $updateRequiredScreenRoute => GoRouteData.$route(
     );
 
 extension $UpdateRequiredScreenRouteExtension on UpdateRequiredScreenRoute {
-  static UpdateRequiredScreenRoute _fromState(GoRouterState state) => const UpdateRequiredScreenRoute();
+  static UpdateRequiredScreenRoute _fromState(GoRouterState state) =>
+      const UpdateRequiredScreenRoute();
 
   String get location => GoRouteData.$location(
         '/update_required_screen',
@@ -139,7 +194,8 @@ extension $UpdateRequiredScreenRouteExtension on UpdateRequiredScreenRoute {
 
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
-  void pushReplacement(BuildContext context) => context.pushReplacement(location);
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
 }
@@ -149,8 +205,10 @@ RouteBase get $storageCapacityInsufficientScreenRoute => GoRouteData.$route(
       factory: $StorageCapacityInsufficientScreenRouteExtension._fromState,
     );
 
-extension $StorageCapacityInsufficientScreenRouteExtension on StorageCapacityInsufficientScreenRoute {
-  static StorageCapacityInsufficientScreenRoute _fromState(GoRouterState state) =>
+extension $StorageCapacityInsufficientScreenRouteExtension
+    on StorageCapacityInsufficientScreenRoute {
+  static StorageCapacityInsufficientScreenRoute _fromState(
+          GoRouterState state) =>
       const StorageCapacityInsufficientScreenRoute();
 
   String get location => GoRouteData.$location(
@@ -161,7 +219,8 @@ extension $StorageCapacityInsufficientScreenRouteExtension on StorageCapacityIns
 
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
-  void pushReplacement(BuildContext context) => context.pushReplacement(location);
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
 }
@@ -172,7 +231,8 @@ RouteBase get $componentsRoute => GoRouteData.$route(
     );
 
 extension $ComponentsRouteExtension on ComponentsRoute {
-  static ComponentsRoute _fromState(GoRouterState state) => const ComponentsRoute();
+  static ComponentsRoute _fromState(GoRouterState state) =>
+      const ComponentsRoute();
 
   String get location => GoRouteData.$location(
         '/components_screen',
@@ -182,7 +242,8 @@ extension $ComponentsRouteExtension on ComponentsRoute {
 
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
-  void pushReplacement(BuildContext context) => context.pushReplacement(location);
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
 }
@@ -207,7 +268,8 @@ RouteBase get $tabScreenShell => ShellRouteData.$route(
     );
 
 extension $TabScreenShellExtension on TabScreenShell {
-  static TabScreenShell _fromState(GoRouterState state) => const TabScreenShell();
+  static TabScreenShell _fromState(GoRouterState state) =>
+      const TabScreenShell();
 }
 
 extension $QuestionRouteExtension on QuestionRoute {
@@ -221,7 +283,8 @@ extension $QuestionRouteExtension on QuestionRoute {
 
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
-  void pushReplacement(BuildContext context) => context.pushReplacement(location);
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
 }
@@ -237,7 +300,8 @@ extension $RecordRouteExtension on RecordRoute {
 
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
-  void pushReplacement(BuildContext context) => context.pushReplacement(location);
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
 }
@@ -253,7 +317,8 @@ extension $ProfileRouteExtension on ProfileRoute {
 
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
-  void pushReplacement(BuildContext context) => context.pushReplacement(location);
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
 }

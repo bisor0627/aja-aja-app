@@ -1,23 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../routers.dart';
+import 'package:ajaaja_app/index.dart';
 
 class ResetPasswordScreen extends ConsumerWidget {
   const ResetPasswordScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text('비밀번호 재설정')),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const TextField(
-                decoration: InputDecoration(
-                  labelText: '휴대폰번호',
-                ),
+              Text(
+                '비밀번호 재설정',
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
               const TextField(
                 decoration: InputDecoration(
@@ -42,10 +37,11 @@ class ResetPasswordScreen extends ConsumerWidget {
                 ),
               ),
               ElevatedButton(
-                child: const Text('재설정'),
+                style: const ButtonStyle().infinity,
                 onPressed: () {
                   const LoginRoute().go(context);
                 },
+                child: const Text('재설정하기'),
               ),
             ],
           ),

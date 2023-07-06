@@ -1,3 +1,6 @@
+import 'package:ajaaja_app/privacy_policy_screen.dart';
+import 'package:ajaaja_app/terms_screen.dart';
+
 import 'index.dart';
 
 export 'package:go_router/go_router.dart';
@@ -65,6 +68,28 @@ class ResetPasswordRoute extends GoRouteData {
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
     return const MaterialPage(child: ResetPasswordScreen());
+  }
+}
+
+@TypedGoRoute<TermsRoute>(
+  path: _Routes.components,
+)
+class TermsRoute extends GoRouteData {
+  const TermsRoute();
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return const MaterialPage(child: TermsScreen());
+  }
+}
+
+@TypedGoRoute<PrivacyRoute>(
+  path: _Routes.components,
+)
+class PrivacyRoute extends GoRouteData {
+  const PrivacyRoute();
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return const MaterialPage(child: PrivacyScreen());
   }
 }
 

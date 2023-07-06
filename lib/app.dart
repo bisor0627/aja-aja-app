@@ -43,10 +43,16 @@ class App extends ConsumerWidget {
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: light,
+          inputDecorationTheme: const InputDecorationTheme(
+            border: OutlineInputBorder(),
+          ),
         ),
         darkTheme: ThemeData(
           useMaterial3: true,
           colorScheme: dark,
+          inputDecorationTheme: const InputDecorationTheme(
+            border: OutlineInputBorder(),
+          ),
         ),
         builder: (context, child) {
           return _flavorBanner(

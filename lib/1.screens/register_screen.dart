@@ -1,21 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../routers.dart';
+import 'package:ajaaja_app/index.dart';
 
 class RegisterScreen extends ConsumerWidget {
   const RegisterScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text('회원가입')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(
+              '회원가입',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
             const TextField(
               decoration: InputDecoration(
-                labelText: '휴대폰번호',
+                labelText: '이메일',
               ),
             ),
             const TextField(
@@ -30,11 +30,30 @@ class RegisterScreen extends ConsumerWidget {
                 labelText: '비밀번호 확인',
               ),
             ),
+            CheckboxListTile(
+              controlAffinity: ListTileControlAffinity.leading,
+              checkboxShape: const CircleBorder(),
+              title: const Text('이용약관 동의 >'),
+              value: true,
+              onChanged: (bool? value) {
+                const TermsRoute().push(context);
+              },
+            ),
+            CheckboxListTile(
+              controlAffinity: ListTileControlAffinity.leading,
+              checkboxShape: const CircleBorder(),
+              title: const Text('개인정보처리 이용안내 동의 >'),
+              value: true,
+              onChanged: (bool? value) {
+                const PrivacyRoute().push(context);
+              },
+            ),
             ElevatedButton(
-              child: const Text('회원가입'),
               onPressed: () {
                 const LoginRoute().go(context);
               },
+              style: const ButtonStyle().infinity,
+              child: const Text('회원가입'),
             ),
           ],
         ),

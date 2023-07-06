@@ -40,32 +40,23 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
                   controller: phoneController,
-                  decoration: InputDecoration(
-                    // suffixIcon: ClearButton(controller: phoneController),
-                    border: const OutlineInputBorder(),
-                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextField(
                   controller: passwordController,
-                  decoration: InputDecoration(
-                    // suffixIcon: ClearButton(controller: passwordController),
-                    border: const OutlineInputBorder(),
-                  ),
                 ),
               ),
               ElevatedButton(
-                // style: ElevatedButton.styleFrom(
-                //     minimumSize: Size.fromWidth(const MediaQueryData().size.width * 0.8),
-                //     ),
+                style: const ButtonStyle().infinity,
                 onPressed: () {
                   ref.read(authAsyncNotifierProvider.notifier).signIn(phoneController.text);
                 },
                 child: const Text('로그인'),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
                     child: const Text('비밀번호 재설정'),
