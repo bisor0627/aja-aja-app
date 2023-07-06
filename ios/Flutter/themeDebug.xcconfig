@@ -1,6 +1,0 @@
-#include "Generated.xcconfig"
-
-FLUTTER_TARGET=lib/main_theme.dart
-ASSET_PREFIX=theme
-BUNDLE_NAME=AjaAja(Theme)
-BUNDLE_DISPLAY_NAME=AjaAja(Theme)

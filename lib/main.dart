@@ -1,21 +1,28 @@
 import 'dart:async';
 
-import 'package:aja_aja_app/flavors.dart';
-import 'package:aja_aja_app/theme/app/theme_app.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
+import 'index.dart';
 
 FutureOr<void> main() async {
-  if (F.appFlavor == Flavor.theme) {
-    runApp(const ProviderScope(child: ThemeApp()));
-  } else {
-    runApp(const ProviderScope(child: App()));
-  }
+  await platformSetup();
+  // 내부 스토리지 생성
+  var prefs = await SharedPreferences.getInstance();
+
+  runApp(
+    ProviderScope(
+      observers: [
+        RiverpodObserver(),
+      ],
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(prefs),
+      ],
+      child: const App(),
+    ),
+  );
 }
 
 /// 플러터 환경설정 세팅
@@ -32,12 +39,15 @@ Future<void> platformSetup() async {
   // 다국어 기본 한국어로 적용
   Intl.defaultLocale = 'ko_KR';
 
+  // Firebase 초기화
+  await FirebaseService().initialize();
+
   // svg 캐시 저장
-  svgPrecacheImage();
+  svgPreCacheImage();
 }
 
 /// svg 아이콘 이미지 캐싱
-void svgPrecacheImage() {
+void svgPreCacheImage() {
   const svgImages = [];
 
   for (String element in svgImages) {

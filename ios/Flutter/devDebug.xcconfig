@@ -2,5 +2,5 @@
 
 FLUTTER_TARGET=lib/main_dev.dart
 ASSET_PREFIX=dev
-BUNDLE_NAME=AjaAja(DEV)
-BUNDLE_DISPLAY_NAME=AjaAja(DEV)
+BUNDLE_NAME=ajaaja(dev)
+BUNDLE_DISPLAY_NAME=ajaaja(dev)

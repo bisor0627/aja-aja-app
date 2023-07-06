@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -46,31 +49,21 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCRfSRmdAuUGo-BjaBXpcA6gEywuCe0tv4',
-    appId: '1:508266637437:web:f38cd1b041109eef22e914',
-    messagingSenderId: '508266637437',
-    projectId: 'aja-aja-app',
-    authDomain: 'aja-aja-app.firebaseapp.com',
-    storageBucket: 'aja-aja-app.appspot.com',
-    measurementId: 'G-S5GK8T8Z75',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyASNCKhxIR6HAmutkm1Jy1ZPhetoYc0Hjc',
-    appId: '1:508266637437:android:faef209948b22b2622e914',
-    messagingSenderId: '508266637437',
-    projectId: 'aja-aja-app',
-    storageBucket: 'aja-aja-app.appspot.com',
+    apiKey: 'AIzaSyCuwlbRNsdyf7l620qX89g9mh5r0m1uS-k',
+    appId: '1:900431631210:android:d067b2f39c6b1ee6264b13',
+    messagingSenderId: '900431631210',
+    projectId: 'ajaaja-831dd',
+    storageBucket: 'ajaaja-831dd.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCbdKxMSQYZzVrO8ikkMnNNgdYC71Bizok',
-    appId: '1:508266637437:ios:3ba3d8f1d44cfd7022e914',
-    messagingSenderId: '508266637437',
-    projectId: 'aja-aja-app',
-    storageBucket: 'aja-aja-app.appspot.com',
-    iosClientId: '508266637437-32vn91pv3a9drchd8roffs1sfm4ko13g.apps.googleusercontent.com',
-    iosBundleId: 'com.a.ja.a.ja.app.theme',
+    apiKey: 'AIzaSyDY_keGsnLY0lDXqhWbHYt7vVaVXicchcc',
+    appId: '1:900431631210:ios:163da04f57661242264b13',
+    messagingSenderId: '900431631210',
+    projectId: 'ajaaja-831dd',
+    storageBucket: 'ajaaja-831dd.appspot.com',
+    iosClientId: '900431631210-8hnlcdqgn2f765jnu1oksbh67mdju74o.apps.googleusercontent.com',
+    iosBundleId: 'com.ajaaja.app',
   );
 }

@@ -1,7 +1,6 @@
 enum Flavor {
-  prod,
   dev,
-  theme,
+  prod,
 }
 
 class F {
@@ -11,15 +10,23 @@ class F {
 
   static String get title {
     switch (appFlavor) {
-      case Flavor.prod:
-        return 'AjaAja';
       case Flavor.dev:
-        return 'AjaAja(DEV)';
-      case Flavor.theme:
-        return 'AjaAja(Theme)';
+        return 'ajaaja(dev)';
+      case Flavor.prod:
+        return 'ajaaja';
       default:
         return 'title';
     }
   }
 
+  static String get endPoint {
+    switch (appFlavor) {
+      case Flavor.dev:
+        return 'http://43.200.119.214/prod';
+      case Flavor.prod:
+        return 'http://43.200.119.214/prod';
+      default:
+        return 'http://43.200.119.214/prod';
+    }
+  }
 }

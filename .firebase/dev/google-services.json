@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "900431631210",
+    "project_id": "ajaaja-831dd",
+    "storage_bucket": "ajaaja-831dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900431631210:android:d067b2f39c6b1ee6264b13",
+        "android_client_info": {
+          "package_name": "com.ajaaja.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "900431631210-cl4i3h8ug3usgrgqna21cv0qc9slukbm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuwlbRNsdyf7l620qX89g9mh5r0m1uS-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "900431631210-cl4i3h8ug3usgrgqna21cv0qc9slukbm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "900431631210-4p1e6h055pn6upcf9sh7vqfvgugc87h6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ajaaja.app.dev"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900431631210:android:cb0c98d4a72ffb12264b13",
+        "android_client_info": {
+          "package_name": "com.ajaaja.app.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "900431631210-cl4i3h8ug3usgrgqna21cv0qc9slukbm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuwlbRNsdyf7l620qX89g9mh5r0m1uS-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "900431631210-cl4i3h8ug3usgrgqna21cv0qc9slukbm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "900431631210-4p1e6h055pn6upcf9sh7vqfvgugc87h6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ajaaja.app.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
