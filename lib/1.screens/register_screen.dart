@@ -13,18 +13,18 @@ class RegisterScreen extends ConsumerWidget {
               '회원가입',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            const TextField(
+            TextFormField(
               decoration: InputDecoration(
                 labelText: '이메일',
               ),
             ),
-            const TextField(
+            TextFormField(
               obscureText: true,
               decoration: InputDecoration(
                 labelText: '비밀번호',
               ),
             ),
-            const TextField(
+            TextFormField(
               obscureText: true,
               decoration: InputDecoration(
                 labelText: '비밀번호 확인',

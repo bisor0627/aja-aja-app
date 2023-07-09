@@ -1,4 +1,7 @@
+import 'package:ajaaja_app/utils/texts.dart';
+
 import '../index.dart';
+import '../utils/regexp.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -7,18 +10,18 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginPageState extends ConsumerState<LoginScreen> {
-  late TextEditingController phoneController;
+  late TextEditingController emailController;
   late TextEditingController passwordController;
   @override
   void initState() {
-    phoneController = TextEditingController();
+    emailController = TextEditingController();
     passwordController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    phoneController.dispose();
+    emailController.dispose();
     passwordController.dispose();
     super.dispose();
   }
@@ -38,20 +41,34 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: TextField(
-                  controller: phoneController,
+                child: TextFormField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                      labelText: '이메일',
+                      errorText: (emailController.text != '' && !RegExp(RegExpEMAIL).hasMatch(emailController.text))
+                          ? Labels.incorrect_email_format.text
+                          : null),
+                  keyboardType: TextInputType.text,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: TextField(
+                child: TextFormField(
                   controller: passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      labelText: '비밀번호',
+                      errorText: (passwordController.text != '' &&
+                              !RegExp(RegExpCheckPASSWORD).hasMatch(passwordController.text))
+                          ? Labels.incorrect_password_format.text
+                          : null),
+                  keyboardType: TextInputType.text,
                 ),
               ),
               ElevatedButton(
                 style: const ButtonStyle().infinity,
                 onPressed: () {
-                  ref.read(authAsyncNotifierProvider.notifier).signIn(phoneController.text);
+                  ref.read(authAsyncNotifierProvider.notifier).signIn(emailController.text);
                 },
                 child: const Text('로그인'),
               ),

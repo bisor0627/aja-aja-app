@@ -14,23 +14,23 @@ class ResetPasswordScreen extends ConsumerWidget {
                 '비밀번호 재설정',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              const TextField(
+              TextFormField(
                 decoration: InputDecoration(
                   labelText: '이메일',
                 ),
               ),
-              const TextField(
+              TextFormField(
                 decoration: InputDecoration(
                   labelText: '인증번호',
                 ),
               ),
-              const TextField(
+              TextFormField(
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: '비밀번호',
                 ),
               ),
-              const TextField(
+              TextFormField(
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: '비밀번호 확인',
