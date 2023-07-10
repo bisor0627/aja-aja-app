@@ -58,8 +58,21 @@ flutter:
     - assets/data/
 
 flutter_native_splash:
-  image: assets/images/splash.png
-  android_12:
-    image: assets/images/splash.png
+  # android_12:
+  #   image: assets/images/splash-light.png
+  #   color: "#42a5f5"
+  #   color_dark: "#042a49"
+  #   image_dark: assets/images/splash-dark.png
+    #icon_background_color: "#111111"
+    #icon_background_color_dark: "#eeeeee"
+  color_android: "#42a5f5"
+  color_dark_android: "#042a49"
+  color_ios: "#42a5f5"
+  color_dark_ios: "#042a49"
+  image_android: assets/images/splash-light.png
+  image_dark_android: assets/images/splash-dark.png
+  image_ios: assets/images/splash-light.png
+  image_dark_ios: assets/images/splash-dark.png
   ios_content_mode: center
+  fullscreen: true
 
