@@ -1,8 +1,9 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../index.dart';
+import '../../../index.dart';
 
 final authAsyncNotifierProvider = AsyncNotifierProvider<AuthAsyncNotifier, AuthStates>(() => AuthAsyncNotifier());
 final networkRoundTripTime = 750.milliseconds;
@@ -31,7 +32,13 @@ class AuthAsyncNotifier extends AsyncNotifier<AuthStates> {
   Future<void> signIn(String newUserName) async {
     state = const AsyncValue.loading();
     await Future<void>.delayed(const Duration(seconds: 3));
-    state = const AsyncValue.data(AuthStates.authenticated);
+
+    var random = Random();
+    if (random.nextBool()) {
+      state = const AsyncValue.data(AuthStates.authenticated);
+    } else {
+      state = const AsyncValue.data(AuthStates.error);
+    }
   }
 
   Future<void> signOut() async {

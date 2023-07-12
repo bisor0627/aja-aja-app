@@ -8,6 +8,7 @@ class RegisterScreen extends ConsumerWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
               '회원가입',

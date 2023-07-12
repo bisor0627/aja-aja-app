@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import '../index.dart';
+import '../../index.dart';
 
 final userAsyncNotifierProvider =
     AsyncNotifierProvider<UserAsyncNotifier, DataResponse<MeResponse>>(() => UserAsyncNotifier());

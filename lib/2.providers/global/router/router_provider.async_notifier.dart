@@ -1,4 +1,4 @@
-import '../../index.dart';
+import '../../../index.dart';
 
 _Path path = _Path();
 

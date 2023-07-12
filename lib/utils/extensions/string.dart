@@ -4,7 +4,7 @@ extension StringExtension on String? {
   /// 패스워드 확인
   bool get isPassword {
     if (this == null) return false;
-    return RegExp(RegExpCheckPASSWORD).hasMatch(this!);
+    return RegExp(RegExpPASSWORD).hasMatch(this!);
   }
 
   /// 이메일 확인

@@ -9,6 +9,7 @@ class ResetPasswordScreen extends ConsumerWidget {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
                 '비밀번호 재설정',

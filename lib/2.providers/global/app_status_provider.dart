@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 
-import '../index.dart';
+import '../../index.dart';
 
 final appStatusAsyncNotifierProvider =
     AsyncNotifierProvider<AppStatusAsyncNotifier, ErrorStatus>(() => AppStatusAsyncNotifier());
