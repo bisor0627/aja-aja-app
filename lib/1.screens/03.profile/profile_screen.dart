@@ -19,7 +19,7 @@ class ProfileScreen extends ConsumerWidget {
                   await ref.read(authAsyncNotifierProvider.notifier).signOut();
                 },
                 style: const ButtonStyle().basic(context).infinity,
-                child: const Text('basic'),
+                child: const Text('로그아웃'),
               ),
             ],
           ),

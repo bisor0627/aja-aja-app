@@ -11,7 +11,7 @@ class PrivacyScreen extends StatelessWidget {
             leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
-                GoRouter.of(context).pop();
+                GoRouter.of(context).pop(true);
               },
             )),
         body: SingleChildScrollView(
