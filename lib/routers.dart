@@ -18,6 +18,9 @@ class _Routes {
   static const String register = '/register_screen';
   static const String resetPassword = '/reset_password_screen';
 
+  static const String terms = '/terms_screen';
+  static const String privacy = '/privacy_screen';
+
   static const String question = '/question_screen';
   static const String record = '/record_screen';
   static const String profile = '/profile_screen';
@@ -72,7 +75,7 @@ class ResetPasswordRoute extends GoRouteData {
 }
 
 @TypedGoRoute<TermsRoute>(
-  path: _Routes.components,
+  path: _Routes.terms,
 )
 class TermsRoute extends GoRouteData {
   const TermsRoute();
@@ -83,7 +86,7 @@ class TermsRoute extends GoRouteData {
 }
 
 @TypedGoRoute<PrivacyRoute>(
-  path: _Routes.components,
+  path: _Routes.privacy,
 )
 class PrivacyRoute extends GoRouteData {
   const PrivacyRoute();

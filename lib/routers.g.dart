@@ -110,7 +110,7 @@ extension $ResetPasswordRouteExtension on ResetPasswordRoute {
 }
 
 RouteBase get $termsRoute => GoRouteData.$route(
-      path: '/components_screen',
+      path: '/terms_screen',
       factory: $TermsRouteExtension._fromState,
     );
 
@@ -118,7 +118,7 @@ extension $TermsRouteExtension on TermsRoute {
   static TermsRoute _fromState(GoRouterState state) => const TermsRoute();
 
   String get location => GoRouteData.$location(
-        '/components_screen',
+        '/terms_screen',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -132,7 +132,7 @@ extension $TermsRouteExtension on TermsRoute {
 }
 
 RouteBase get $privacyRoute => GoRouteData.$route(
-      path: '/components_screen',
+      path: '/privacy_screen',
       factory: $PrivacyRouteExtension._fromState,
     );
 
@@ -140,7 +140,7 @@ extension $PrivacyRouteExtension on PrivacyRoute {
   static PrivacyRoute _fromState(GoRouterState state) => const PrivacyRoute();
 
   String get location => GoRouteData.$location(
-        '/components_screen',
+        '/privacy_screen',
       );
 
   void go(BuildContext context) => context.go(location);
