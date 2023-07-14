@@ -139,7 +139,6 @@
 				40E63651907B447A5434008E /* Pods-RunnerTests.profile-prod.xcconfig */,
 				584FA39558F822F6BDEB26B9 /* Pods-RunnerTests.release-prod.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -460,7 +459,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 78BAF1468DA870F19800C8DD /* Pods-Runner.debug-dev.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = RK3JJD2BZC;
+				DEVELOPMENT_TEAM = 4UPH4AM433;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-dev";
@@ -469,7 +468,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 991F60E44A788AEE98223767 /* Pods-Runner.profile-dev.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = RK3JJD2BZC;
+				DEVELOPMENT_TEAM = 4UPH4AM433;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-dev";
@@ -478,7 +477,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DFCB0BA63032F84C0CA52E51 /* Pods-Runner.release-dev.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = RK3JJD2BZC;
+				DEVELOPMENT_TEAM = 4UPH4AM433;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-dev";
@@ -487,7 +486,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 217DBCA10EB6CD4B245AD63C /* Pods-Runner.debug-prod.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = RK3JJD2BZC;
+				DEVELOPMENT_TEAM = 4UPH4AM433;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-prod";
@@ -496,7 +495,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DCDC35D6755710B4A8D6BFD0 /* Pods-Runner.profile-prod.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = RK3JJD2BZC;
+				DEVELOPMENT_TEAM = 4UPH4AM433;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-prod";
@@ -505,7 +504,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 37576D9EED8F3909D313F006 /* Pods-Runner.release-prod.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = RK3JJD2BZC;
+				DEVELOPMENT_TEAM = 4UPH4AM433;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-prod";
@@ -618,7 +617,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = RK3JJD2BZC;
+				DEVELOPMENT_TEAM = 4UPH4AM433;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1085,7 +1084,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = RK3JJD2BZC;
+				DEVELOPMENT_TEAM = 4UPH4AM433;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1111,7 +1110,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = RK3JJD2BZC;
+				DEVELOPMENT_TEAM = 4UPH4AM433;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
